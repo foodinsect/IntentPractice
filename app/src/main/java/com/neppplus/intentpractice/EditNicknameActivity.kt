@@ -11,5 +11,9 @@ class EditNicknameActivity : AppCompatActivity() {
         binding = ActivityEditNicknameBinding.inflate(layoutInflater) // 추가
         setContentView(binding.root)
 
+        binding.okBtn.setOnClickListener {
+
+
+        }
     }
 }

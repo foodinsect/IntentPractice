@@ -7,6 +7,8 @@ import android.content.Intent // 추가
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding // 추가
+
+    val REQUSET_FOR_NICKNAME = 1005
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater) // 추가
@@ -24,6 +26,12 @@ class MainActivity : AppCompatActivity() {
             val myIntent = Intent(this, MessageActivity::class.java)
             myIntent.putExtra("message", inputMessage)
             startActivity(myIntent)
+        }
+
+        binding.editNicknameBtn.setOnClickListener {
+
+            val myIntent = Intent(this,EditNicknameActivity::class.java)
+            startActivityForResult(myIntent, REQUSET_FOR_NICKNAME)
         }
     }
 }
