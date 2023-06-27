@@ -16,24 +16,29 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater) // 추가
         setContentView(binding.root)
 
+        // 문자 전송 예제
+        binding.smsBtn.setOnClickListener {
+            val inputPhoneNum = binding.phoneNumEdt.text.toString()
+            val myUri = Uri.parse("smsto:${inputPhoneNum}")
+            val myIntent = Intent(Intent.ACTION_SENDTO, myUri)
+            myIntent.putExtra("sms_body","미리 내용 입력")
+            startActivity(myIntent)
+        }
+
+
+        // CALL 액션 예제
         binding.callBtn.setOnClickListener {
             val inputPhoneNum = binding.phoneNumEdt.text.toString()
-
             val myUri = Uri.parse("tel:${inputPhoneNum}")
-
             val myIntent = Intent(Intent.ACTION_CALL, myUri)
-
             startActivity(myIntent)
         }
 
         // DIAL 액션 예제
         binding.dialBtn.setOnClickListener {
             val inputPhoneNum = binding.phoneNumEdt.text.toString()
-
             val myUri = Uri.parse("tel:${inputPhoneNum}")
-
             val myIntent = Intent(Intent.ACTION_DIAL, myUri)
-
             startActivity(myIntent)
         }
 
