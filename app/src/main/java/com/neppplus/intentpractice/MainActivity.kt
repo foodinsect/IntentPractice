@@ -1,5 +1,6 @@
 package com.neppplus.intentpractice
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.neppplus.intentpractice.databinding.ActivityMainBinding // 추가
@@ -38,8 +39,19 @@ class MainActivity : AppCompatActivity() {
             startActivity(myIntent)
         }
 
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
+        // 돌아온 이유가 닉네임을 받으러 다녀온게 맞는지?
+        if (requestCode == REQUSET_FOR_NICKNAME){
 
+            if(resultCode == Activity.RESULT_OK){
+
+                val newNickname = data?.getStringExtra("nickname")
+                binding.nicknameTxt.text = newNickname
+            }
+        }
     }
 }
