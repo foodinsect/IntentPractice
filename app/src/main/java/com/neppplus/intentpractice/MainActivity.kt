@@ -14,6 +14,16 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater) // 추가
         setContentView(binding.root)
 
+
+        binding.editNicknameBtn.setOnClickListener {
+
+            val myIntent = Intent(this,EditNicknameActivity::class.java)
+            startActivityForResult(myIntent, REQUSET_FOR_NICKNAME)
+        }
+
+
+
+
         binding.moveToOtherBtn.setOnClickListener {
             // 다른 화면으로 이동
             val myIntent = Intent(this, OtherActivity::class.java)
@@ -28,10 +38,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(myIntent)
         }
 
-        binding.editNicknameBtn.setOnClickListener {
 
-            val myIntent = Intent(this,EditNicknameActivity::class.java)
-            startActivityForResult(myIntent, REQUSET_FOR_NICKNAME)
-        }
+
+
     }
 }
