@@ -16,6 +16,21 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater) // 추가
         setContentView(binding.root)
 
+        // 웹페이지 열기 예제
+        binding.naverWebBtn.setOnClickListener {
+            val myUri = Uri.parse("https://naver.com")
+            val myIntent =Intent(Intent.ACTION_VIEW,myUri)
+            startActivity(myIntent)
+        }
+        // 플레이스토어 상세화면 링크
+        binding.kakaoStoreBtn.setOnClickListener {
+            val myUri = Uri.parse("market://details?id=com.kakao.talk")
+            val myIntent =Intent(Intent.ACTION_VIEW,myUri)
+            startActivity(myIntent)
+
+        }
+
+
         // 문자 전송 예제
         binding.smsBtn.setOnClickListener {
             val inputPhoneNum = binding.phoneNumEdt.text.toString()
@@ -48,8 +63,6 @@ class MainActivity : AppCompatActivity() {
             val myIntent = Intent(this,EditNicknameActivity::class.java)
             startActivityForResult(myIntent, REQUSET_FOR_NICKNAME)
         }
-
-
 
 
         binding.moveToOtherBtn.setOnClickListener {
