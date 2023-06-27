@@ -16,6 +16,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater) // 추가
         setContentView(binding.root)
 
+        binding.callBtn.setOnClickListener {
+            val inputPhoneNum = binding.phoneNumEdt.text.toString()
+
+            val myUri = Uri.parse("tel:${inputPhoneNum}")
+
+            val myIntent = Intent(Intent.ACTION_CALL, myUri)
+
+            startActivity(myIntent)
+        }
 
         // DIAL 액션 예제
         binding.dialBtn.setOnClickListener {
