@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.neppplus.intentpractice.databinding.ActivityMainBinding // 추가
 import android.content.Intent // 추가
+import android.net.Uri
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding // 추가
@@ -14,6 +15,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater) // 추가
         setContentView(binding.root)
+
+
+        // DIAL 액션 예제
+        binding.dialBtn.setOnClickListener {
+            val inputPhoneNum = binding.phoneNumEdt.text.toString()
+
+            val myUri = Uri.parse("tel:${inputPhoneNum}")
+
+            val myIntent = Intent(Intent.ACTION_DIAL, myUri)
+
+            startActivity(myIntent)
+        }
 
 
         binding.editNicknameBtn.setOnClickListener {
